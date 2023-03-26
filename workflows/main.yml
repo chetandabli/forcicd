@@ -1,0 +1,36 @@
+# workflow
+# title: CoolBook
+# description: a book website
+# name: CoolBook
+# on: 
+#   push:
+#     branches: 
+#       - master
+#   pull_request:
+#     branches: 
+#       - master
+# jobs:
+#   build: 
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: print node version
+#         run: node --version
+#       - name: print npm version
+#         run: npm --version
+#       - name: print pwd
+#         run: pwd
+
+
+on: push
+jobs: 
+  first-job: 
+    runs-on: ubuntu-latest
+    steps:
+      - run: install nodejs
+      - run: node --version
+      - run: npm --version
+      - uses: actions/checkout@v3
+      - run: npm i express
+      - run: npx eslint . --fix
+      - run: node index.js
